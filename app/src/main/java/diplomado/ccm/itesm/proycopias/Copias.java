@@ -1,19 +1,28 @@
 package diplomado.ccm.itesm.proycopias;
 
+import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 
-public class Copias extends ActionBarActivity {
+public class Copias extends Activity {
+
+    private EditText etFrom;
+    private EditText etTo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_copias);
+        etFrom   = (EditText) findViewById(R.id.textSource);
+        etTo     = (EditText) findViewById(R.id.textDestiny);
     }
 
     @Override
@@ -39,11 +48,14 @@ public class Copias extends ActionBarActivity {
     }
 
     public void copyText(View vw){
-
-        TextView txtSource  = (TextView) findViewById(R.id.textSource);
+        Log.d("test", "Iniciando el copiado de los datos");
+        etTo.setText(etFrom.getText().toString());
+        etFrom.setText("");
+        Log.d("text", "Finalizamos el copiado de los datos");
+        /*TextView txtSource  = (TextView) findViewById(R.id.textSource);
         TextView txtDestiny = (TextView) findViewById(R.id.textDestiny);
         txtDestiny.setText(txtSource.getText());
-
+        */
 
     }
 }
