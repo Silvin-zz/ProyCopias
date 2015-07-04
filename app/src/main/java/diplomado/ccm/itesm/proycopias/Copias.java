@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -15,6 +16,7 @@ public class Copias extends Activity {
 
     private EditText etFrom;
     private EditText etTo;
+    private Button btnCopy;
 
 
     @Override
@@ -23,6 +25,8 @@ public class Copias extends Activity {
         setContentView(R.layout.activity_copias);
         etFrom   = (EditText) findViewById(R.id.textSource);
         etTo     = (EditText) findViewById(R.id.textDestiny);
+        btnCopy  = (Button) findViewById(R.id.buttonCopy);
+        btnCopy.setOnClickListener(listenerBtnCopy);
     }
 
     @Override
@@ -47,11 +51,25 @@ public class Copias extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    private View.OnClickListener listenerBtnCopy =  new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            Log.d("test", "Iniciando el copiado de los datos");
+            etTo.setText(etFrom.getText().toString());
+            etFrom.setText("");
+            Log.d("text", "Finalizamos el copiado de los datos");
+
+        }
+    };
+
     public void copyText(View vw){
+        /*
         Log.d("test", "Iniciando el copiado de los datos");
         etTo.setText(etFrom.getText().toString());
         etFrom.setText("");
         Log.d("text", "Finalizamos el copiado de los datos");
+        */
         /*TextView txtSource  = (TextView) findViewById(R.id.textSource);
         TextView txtDestiny = (TextView) findViewById(R.id.textDestiny);
         txtDestiny.setText(txtSource.getText());
